@@ -25,23 +25,21 @@ class FbxBatchExportOperator(Operator):
             filepath = path.join(props.export_path, filename)
 
             OperationWrapper.export_fbx(context=bpy.context, filepath=filepath, objects=objects, props=props)
-            return number + 1
         except RuntimeError as e:
             print(e)
-            return number
 
     def export_objects(self, context, props: FbxBatchExportProperties):
-        objects = context.selected_objects
+        target_objects = context.selected_objects
 
         bpy.ops.object.mode_set(mode="OBJECT")
 
-        for i, obj in enumerate(objects):
+        for i, obj in enumerate(target_objects):
             objects = [obj]
             for child in bpy.data.objects:
                 if child.parent == obj:
                     objects.append(child)
 
-            self.export_object(i, obj.name, props, [objects])
+            self.export_object(i, obj.name, props, objects)
         return
 
     def execute(self, context):

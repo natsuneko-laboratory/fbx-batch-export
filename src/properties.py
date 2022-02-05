@@ -56,7 +56,7 @@ class FbxBatchExportProperties(PropertyGroup):
                                        description="!EXPERIMENTAL! Apply Transform, Bake space transform into object data, avoids getting unwanted rotations to objects when target space is not aligned with Blender's space (WARNING! experimental option, use at own risks, known broken with armatures/animations)", options={'HIDDEN'})
     use_mesh_modifiers: BoolProperty(default=False, name="Apply Modifiers",
                                      description="Apply Modifiers, Apply modifiers to mesh objects (except Armature ones) - WARNING: prevents exporting shape keys", options={'HIDDEN'})
-    mesh_smooth_type: BoolProperty(default=0, items=_mesh_smooth_type, name="Smoothing",
+    mesh_smooth_type: EnumProperty(default=0, items=_mesh_smooth_type, name="Smoothing",
                                    description="Smoothing, Export smoothed mesh if available", options={'HIDDEN'})
     use_subsurf: BoolProperty(default=False, name="Export Subdivision Surface",
                               description=" Export the last Catmull-Rom subidivion modifier as FBX subdivision (Does not apply the modifier even if 'Apply Modifiers' is enabled)", options={'HIDDEN'})
